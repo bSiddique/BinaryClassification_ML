@@ -1,4 +1,4 @@
-#Upload your encoded dataset to Google Collab and initialize your dataset using the below code
+#Upload your encoded dataset to Google Colab and initialize your process using the below code
 %matplotlib notebook
 import numpy as np
 import matplotlib.pyplot as plt
@@ -6,11 +6,11 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 node = pd.read_csv('/content/YourFileName.csv')
-#YourFileName.csv should be same as the dataset you uploaded
+#YourFileName.csv should be same as the dataset you uploaded in colab
 
 
 node.head()
-#this will load your dataset and show it on Google Collab
+#this will load your dataset and show it on Google Colab
 
 #X should contain your column names and y should contain your label column name
 X = node[['q1', 'q2', 'q3','q4', 'q5', 'q6','q7', 'q8', 'q9','q10', 'q11', 'q12','q13', 'q14', 'q15', 'q16', 'q17', 'q18','q19', 'q20', 'q21']]
