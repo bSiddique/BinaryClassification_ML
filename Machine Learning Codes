@@ -1,0 +1,123 @@
+#Upload your encoded dataset to Google Collab and initialize your dataset using the below code
+%matplotlib notebook
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
+from sklearn.model_selection import train_test_split
+
+node = pd.read_csv('/content/YourFileName.csv')
+#YourFileName.csv should be same as the dataset you uploaded
+
+
+node.head()
+#this will load your dataset and show it on Google Collab
+
+#X should contain your column names and y should contain your label column name
+X = node[['q1', 'q2', 'q3','q4', 'q5', 'q6','q7', 'q8', 'q9','q10', 'q11', 'q12','q13', 'q14', 'q15', 'q16', 'q17', 'q18','q19', 'q20', 'q21']]
+y = node['label']
+
+# default is 75% / 25% train-test split
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+
+#KNN
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors = 6)
+knn.fit(X_train, y_train)
+knn.score(X_test, y_test)
+
+#confusion matrix for knn
+from sklearn.metrics import plot_confusion_matrix
+plot_confusion_matrix(knn, X_test, y_test)
+
+#SVM
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+from sklearn.svm import SVC
+model = SVC()
+model.fit(X_train, y_train)
+model.score(X_test, y_test)
+
+#confusion matrix for svm
+from sklearn.metrics import plot_confusion_matrix
+plot_confusion_matrix(model, X_test, y_test)
+
+
+#Decision Tree
+from sklearn import tree
+model = tree.DecisionTreeClassifier()
+model.fit(X_train, y_train)
+model.score(X_test, y_test)
+
+#confusion matrix for decision tree
+from sklearn.metrics import plot_confusion_matrix
+plot_confusion_matrix(model, X_test, y_test)
+
+#Random Forest
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2)
+from sklearn.ensemble import RandomForestClassifier
+model = RandomForestClassifier(n_estimators=100)
+model.fit(X_train, y_train)
+model.score(X_test, y_test)
+
+#confusion matrix for decision tree
+from sklearn.metrics import plot_confusion_matrix
+plot_confusion_matrix(model, X_test, y_test)
+
+
+#Logistic Regression
+X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=0)
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train)
+y_predicted = model.predict(X_test)
+model.predict_proba(X_test)
+model.score(X_test,y_test)
+
+#confusion matrix for logistic regression
+from sklearn.metrics import plot_confusion_matrix
+plot_confusion_matrix(model, X_test, y_test)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
